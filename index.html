@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>angularJs</title>
+</head>
+<body>
+    <div ng-controller="HelloWorldController as $ctrl">
+        <h2 ng-click="myDirectiveCtrl.setText()">{{ text }}</h2>
+        <h3>{{ $ctrl.getText() }}</h3>
+        <my-directive></my-directive>
+    </div>
+    <my-directive name="Rey"></my-directive>
+    <!-- <form ng-controller = "FormController">
+        <p>{{data}}</p>
+        <li>
+            <label>name
+                <input type="text" ng-model = "data.name">
+            </label>
+        </li>
+        <li ng-if="!data.flag">
+            <p>{{data}}</p>
+            <label >email
+                <input type="email" ng-model = "data.email">
+            </label>
+        </li>
+        <li>
+            <label>password
+                <input type="password" ng-model = "data.password">
+            </label>
+        </li>
+        <button type="submit">save</button>
+    </form> -->
+    <form-directive></form-directive>
+</body>
+<script src="./node_modules/angular/angular.js"></script>
+<script src="src/app.js"></script>
+<script src="src/component/helloworld/helloworld.controller.js"></script>
+<!-- <script src="src/component/nextTrucking/nextTrucking.component.js"></script> -->
+<script src="src/component/myDirective/myDirective.directive.js"></script>
+<script src="src/component/formDirective/formDirective.directive.js"></script>
+<script src="./node_modules/ngreact/ngReact.js"></script>
+</html>

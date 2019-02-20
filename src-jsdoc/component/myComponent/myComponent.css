@@ -1,0 +1,23 @@
+.position-a {
+    position: absolute;
+}
+
+.position-r {
+    position: relative;
+}
+
+.magin-l-xs {
+    margin-left: 5px
+}
+
+.magin-l-sm {
+    margin-left: 10px
+}
+
+.magin-l-md {
+    margin-left: 15px
+}
+
+.magin-l-lg {
+    margin-left: 20px
+}

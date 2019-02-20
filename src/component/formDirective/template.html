@@ -1,0 +1,21 @@
+<form>
+    <p>{{fst}}</p>
+  <p>{{data}}</p>
+  <li>
+      <label>name
+          <input type="text" ng-model = "data.name">
+      </label>
+  </li>
+  <li ng-if="!data.flag">
+      <p>{{data}}</p>
+      <label >email
+          <input type="email" id="email" name="email" ng-model = "data.email">
+      </label>
+  </li>
+  <li>
+      <label>password
+          <input type="password" ng-model = "data.password">
+      </label>
+  </li>
+  <button type="submit">save</button>
+</form>
