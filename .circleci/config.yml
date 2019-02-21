@@ -7,8 +7,3 @@ workflows:
     "Hello Workflow":
         jobs:
           - hello/hello-build
-jobs:
-  build:
-    docker:
-      - image: circleci/node:4.8.2
-      - run: echo "hello world"
