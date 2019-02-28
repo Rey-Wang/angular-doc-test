@@ -7,7 +7,7 @@ executors:
       - image: circleci/node:4.8.2
 jobs:
   build:
-    executor: CircleExecutor
+    executor: circle-executor
     steps:
       - checkout # check out the code in the project directory
       - run: echo "copy files to AWS S3" # run the `echo` command
