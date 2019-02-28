@@ -1,10 +1,12 @@
 version: 2.1
+aliases:
+  - &buildImage 595477448247.dkr.ecr.us-west-2.amazonaws.com/nexttrucking/circleci-node:19f121741302d57fd78ba2aacb86fedbc9868a90
 orbs:
-  aws-s3: 595477448247.dkr.ecr.us-west-2.amazonaws.com/nexttrucking/circleci-node:19f121741302d57fd78ba2aacb86fedbc9868a90
+  aws-s3: circleci/aws-s3@1.0.0
 executors:
   circle-executor:
     docker:
-      - image: circleci/python:3.8-rc-stretch-node-browsers-legacy
+      - image: *buildImage
 jobs:
   build:
     executor: circle-executor
