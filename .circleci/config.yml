@@ -17,7 +17,7 @@ jobs:
           to: 's3.console.aws.amazon.com/s3/buckets/s3-luke-test-only/'
           arguments: |
             --acl public-read \
-      -- aws-s3/copy:
+      - aws-s3/copy:
           from: bucket/build_asset.txt
           to: 's3.console.aws.amazon.com/s3/buckets/s3-luke-test-only/'
           arguments: '--dryrun'
