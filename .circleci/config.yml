@@ -4,7 +4,7 @@ orbs:
 executors:
   circle-executor:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/python:3.8-rc-stretch-node-browsers-legacy
 jobs:
   build:
     executor: circle-executor
