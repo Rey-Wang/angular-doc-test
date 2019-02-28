@@ -1,5 +1,6 @@
 version: 2.1
-orbs: circleci/aws-s3@1.0.4
+orbs:
+  aws-s3: circleci/aws-s3@1.0.4
 executors:
   circle-executor:
     docker:
@@ -16,3 +17,7 @@ jobs:
           to: 's3.console.aws.amazon.com/s3/buckets/s3-luke-test-only/'
           arguments: |
             --acl public-read \
+      -- aws-s3/copy:
+          from: bucket/build_asset.txt
+          to: 's3.console.aws.amazon.com/s3/buckets/s3-luke-test-only/'
+          arguments: '--dryrun'
