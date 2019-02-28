@@ -1,8 +1,18 @@
-version: 2
+version: 2.1
+orbs: circleci/aws-s3@1.0.4
+executors:
+  CircleExecutor:
+    docker:
+      - image: circleci/node:4.8.2
 jobs:
   build:
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+    executor: CircleExecutor
     steps:
       - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+      - run: echo "copy files to AWS S3" # run the `echo` command
+      - run: mkdir bucket && echo "lorum ipsum" > bucket/build_asset.txt
+      - aws-s3/sync:
+          from: bucket
+          to: 's3.console.aws.amazon.com/s3/buckets/s3-luke-test-only/'
+          arguments: |
+            --acl public-read \
