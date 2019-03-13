@@ -37,6 +37,7 @@ workflows:
               only:
                 - master
       - build:
+          name: buildAllBranches
           branchFlag: false
           filters:
             branches:
