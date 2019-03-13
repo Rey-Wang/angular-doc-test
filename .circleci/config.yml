@@ -8,22 +8,18 @@ executors:
 jobs:
   build:
     parameters:
-      current-branch:
+      branchFlag:
         type: string
+        default: true
     executor: circle-executor
     steps:
       - checkout # check out the code in the project directory
-      - run: echo <<parameters.current-branch>>
-      - run:
-          name : 'expression'
-          command: |
-            if [[ <<parameters.current-branch>> = master ]] echo true
       - run: echo "npm install" # run the `echo` command
       - run: echo "bower install"
       - run: echo "test"
       - run: echo "builddev"
       - when:
-          condition: <<parameters.current-branch>>
+          condition: <<parameters.branchFlag>>
           steps:
             - run: echo "buildtest"
             - run: echo "builddemo"
@@ -36,15 +32,20 @@ workflows:
   test-publish:
     jobs:
       - build:
-          current-branch: ${CIRCLE_BRANCH}
-      - hold:
-          type: approval
-          requires:
-            - build
           filters:
             branches:
               only:
                 - master
+      - build:
+          branchFlag: false
+          filters:
+            branches:
+              ignore:
+                - master
+      - hold:
+          type: approval
+          requires:
+            - build
       - deploy:
           requires:
             - hold
