@@ -7,6 +7,9 @@ executors:
       - image: circleci/node:4.8.2
 jobs:
   build:
+    parameters:
+      current-branch:
+        type: string
     executor: circle-executor
     steps:
       - checkout # check out the code in the project directory
@@ -14,9 +17,12 @@ jobs:
       - run: echo "bower install"
       - run: echo "test"
       - run: echo "builddev"
-      - run: echo "buildtest"
-      - run: echo "builddemo"
-      - run: echo "buildprod"
+      - when:
+          condition: <<parameters.current-branch>>
+          steps:
+            - run: echo "buildtest"
+            - run: echo "builddemo"
+            - run: echo "buildprod"
   deploy:
     executor: circle-executor
     steps:
@@ -25,14 +31,15 @@ workflows:
   test-publish:
     jobs:
       - build:
-          filters:
-            branches:
-              only:
-                - master
+          current-branch: ${CIRCLE_BRANCH} = master
       - hold:
           type: approval
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - master
       - deploy:
           requires:
             - hold
