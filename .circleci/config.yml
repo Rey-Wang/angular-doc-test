@@ -15,10 +15,9 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo <<parameters.current-branch>>
       - run:
-          name : 'change'
+          name : 'expression'
           command: |
-            <<parameters.current-branch>>=false
-      - run: echo <<parameters.current-branch>>
+            echo [[ <<parameters.current-branch>> = master ]]
       - run: echo "npm install" # run the `echo` command
       - run: echo "bower install"
       - run: echo "test"
