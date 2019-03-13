@@ -27,7 +27,7 @@ workflows:
   test-publish:
     jobs:
       - build:
-        - filters:
+          filters:
             branches:
               only:
                 - master
