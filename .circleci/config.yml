@@ -19,7 +19,7 @@ jobs:
       - run: echo "test"
       - run: echo "builddev"
       - when:
-          condition: <<parameters.current-branch>>==master
+          condition: false
           steps:
             - run: echo "buildtest"
             - run: echo "builddemo"
