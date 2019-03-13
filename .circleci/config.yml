@@ -32,7 +32,7 @@ workflows:
   test-publish:
     jobs:
       - build:
-          current-branch: ${CIRCLE_BRANCH}=master
+          current-branch: eval "${CIRCLE_BRANCH}=master"
       - hold:
           type: approval
           requires:
