@@ -13,6 +13,8 @@ jobs:
     executor: circle-executor
     steps:
       - checkout # check out the code in the project directory
+      - run: echo ${CIRCLE_BRANCH}
+      - run: echo eval ""${CIRCLE_BRANCH}" = master"
       - run: echo "npm install" # run the `echo` command
       - run: echo "bower install"
       - run: echo "test"
