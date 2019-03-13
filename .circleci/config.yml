@@ -13,8 +13,7 @@ jobs:
     executor: circle-executor
     steps:
       - checkout # check out the code in the project directory
-      - run: echo ${CIRCLE_BRANCH}
-      - run: echo eval ""${CIRCLE_BRANCH}" = master"
+      - run: echo <<parameters.current-branch>>
       - run: echo "npm install" # run the `echo` command
       - run: echo "bower install"
       - run: echo "test"
@@ -33,7 +32,7 @@ workflows:
   test-publish:
     jobs:
       - build:
-          current-branch: ${CIRCLE_BRANCH}
+          current-branch: ${CIRCLE_BRANCH}=master
       - hold:
           type: approval
           requires:
