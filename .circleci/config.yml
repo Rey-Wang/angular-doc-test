@@ -17,7 +17,7 @@ jobs:
       - run:
           name : 'expression'
           command: |
-            echo [[ <<parameters.current-branch>> = master ]]
+            if [[ <<parameters.current-branch>> = master ]] echo true
       - run: echo "npm install" # run the `echo` command
       - run: echo "bower install"
       - run: echo "test"
