@@ -18,7 +18,7 @@ jobs:
       - run: echo "test"
       - run: echo "builddev"
       - when:
-          condition: <<parameters.current-branch>>
+          condition: <<parameters.current-branch>> = master
           steps:
             - run: echo "buildtest"
             - run: echo "builddemo"
@@ -31,7 +31,7 @@ workflows:
   test-publish:
     jobs:
       - build:
-          current-branch: ${CIRCLE_BRANCH} = master
+          current-branch: ${CIRCLE_BRANCH}
       - hold:
           type: approval
           requires:
