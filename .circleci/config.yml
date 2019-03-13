@@ -9,7 +9,7 @@ jobs:
   build:
     parameters:
       branchFlag:
-        type: string
+        type: boolean
         default: true
     executor: circle-executor
     steps:
